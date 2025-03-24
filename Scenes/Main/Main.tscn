@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://dqgf3c5oqunsu"]
+[gd_scene load_steps=10 format=4 uid="uid://dqgf3c5oqunsu"]
 
 [ext_resource type="TileSet" uid="uid://wyml5kpfyuxt" path="res://Resources/tile_set.tres" id="1_het1v"]
 [ext_resource type="PackedScene" uid="uid://daqed7r0occw8" path="res://Scenes/manager/enemy_manager.tscn" id="1_i3fi7"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bg8nc46hro16n" path="res://Scenes/manager/upgrade_manager.tscn" id="3_5s61s"]
 [ext_resource type="PackedScene" uid="uid://da8w0rkps3r7d" path="res://Scenes/ui/ExperienceBar.tscn" id="3_aw1lf"]
 [ext_resource type="PackedScene" uid="uid://bhq5nuc2hgmql" path="res://Scenes/ui/ArenaTimeUI.tscn" id="5_o8wgc"]
+[ext_resource type="PackedScene" uid="uid://b3jg8lnkdbk4c" path="res://Scenes/ui/victory_Screen.tscn" id="6_7npjy"]
 [ext_resource type="PackedScene" uid="uid://df7ccvudvjhg2" path="res://Scenes/manager/arena_time_manager.tscn" id="6_w20t6"]
 
 [node name="Main" type="Node"]
@@ -22,6 +23,7 @@ experience_manager = NodePath("../ExperienceManager")
 arena_time_manager = NodePath("../ArenaTimeManager")
 
 [node name="ArenaTimeManager" parent="." instance=ExtResource("6_w20t6")]
+vitory_screen = ExtResource("6_7npjy")
 
 [node name="UpgradeManager" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("3_5s61s")]
 process_mode = 0
