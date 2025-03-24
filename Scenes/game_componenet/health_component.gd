@@ -1,7 +1,7 @@
 extends Node
 class_name HealthComponent
 
-@export var max_health = 35
+@export var max_health:int
 signal  died
 signal health_changed
 

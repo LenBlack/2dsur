@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @export var MAX_SPEED:int = 500
+@export var gameover_sceen: PackedScene
+
 @onready var collision_area = $CollisionArea2D
 @onready var damage_interval_timer = $DamageInterValTimer
 @onready var health_component = $HealthComponent
@@ -24,7 +26,8 @@ func display_health():
 	health_bar.value = health_component.get_health_percent()
 
 func on_died():
-	print("Player died!")
+	var gameover_sceen_ins = gameover_sceen.instantiate()
+	get_parent().add_child(gameover_sceen_ins)
 	
 func on_timeout_damage_timer():
 	check_damage()
