@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var collision_area = $CollisionArea2D
 @onready var damage_interval_timer = $DamageInterValTimer
 @onready var health_component = $HealthComponent
+@onready var health_bar = $HealthBar
 # collisionArea2d的用处是检测敌人进入 然后收到伤害
 var number_collision_bodies = 0
 
@@ -13,6 +14,14 @@ func _ready() -> void:
 	collision_area.body_entered.connect(on_body_entered)
 	collision_area.body_exited.connect(on_body_exited)
 	damage_interval_timer.timeout.connect(on_timeout_damage_timer)
+	health_component.health_changed.connect(on_health_changed)
+	display_health()
+	
+func on_health_changed():
+	display_health()
+
+func display_health():
+	health_bar.value = health_component.get_health_percent()
 
 func on_died():
 	print("Player died!")
