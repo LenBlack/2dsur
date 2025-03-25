@@ -1,13 +1,20 @@
 extends Node
 
 @export var basic_enemy_scene:PackedScene
+
+@onready var timer = $Timer
 const MAX_VIWE:int = 350
+var enemy_span_time = 1
 
 func _ready() -> void:
-	$Timer.timeout.connect(on_timeout)
+	timer.wait_time = enemy_span_time
+	timer.timeout.connect(on_timeout)
 	
 	
 func on_timeout():
+	timer.wait_time = max(timer.wait_time * 0.9, 0.2)
+	timer.start()
+	print("enemy_span_time{0}".format([timer.wait_time]))
 	var player_node = get_tree().get_first_node_in_group("player") as Node2D
 	if player_node == null:
 		return 
