@@ -3,7 +3,7 @@ const MAX_DIS:int = 200
 @export var sword: PackedScene
 
 var base_wait_time = 1.5
-
+	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Timer.timeout.connect(on_timer_timeout)
