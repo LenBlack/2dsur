@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://d3mxf6b1eerhd"]
+[gd_scene load_steps=12 format=3 uid="uid://d3mxf6b1eerhd"]
 
 [ext_resource type="Texture2D" uid="uid://dr34xvdv6bqyw" path="res://Scenes/game_object/Player/tile_0096.png" id="1_btxse"]
 [ext_resource type="Script" uid="uid://cuw2enlcctedk" path="res://Scenes/game_object/Player/player.gd" id="1_l1sdq"]
 [ext_resource type="PackedScene" uid="uid://bu428627hqs3f" path="res://Scenes/ui/gameover_Screen.tscn" id="2_vun7l"]
 [ext_resource type="PackedScene" uid="uid://c0pl1mdmixnqt" path="res://Scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="3_lpcs4"]
 [ext_resource type="PackedScene" uid="uid://byycu8jp6wqpo" path="res://Scenes/game_componenet/HealthComponent.tscn" id="4_42vfa"]
+[ext_resource type="PackedScene" uid="uid://nw8r3socvn36" path="res://Scenes/ability/axe_abilitycontroller/axe_ability_controller.tscn" id="4_s75ue"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_42vfa"]
 bg_color = Color(0.247059, 0.14902, 0.192157, 1)
@@ -36,6 +37,8 @@ gameover_sceen = ExtResource("2_vun7l")
 [node name="AbilityManager" type="Node" parent="."]
 
 [node name="SwordAbilityController" parent="AbilityManager" instance=ExtResource("3_lpcs4")]
+
+[node name="AxeAbilityController" parent="AbilityManager" instance=ExtResource("4_s75ue")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_42vfa")]
 max_health = 5
