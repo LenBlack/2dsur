@@ -14,7 +14,6 @@ func _ready() -> void:
 
 ## 技能池进行赋值操作
 func set_ability_upgrades(upgrades: Array[AbilityUpgrade]):
-
 	if cards_container == null:
 		print("null")
 		return 

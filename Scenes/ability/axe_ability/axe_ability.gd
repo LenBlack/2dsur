@@ -2,6 +2,7 @@ extends Node2D
 
 const MAX_RADIUS = 100
 @onready var hitbox = $HitBoxComponent
+
 func _ready() -> void:
 	var tween = create_tween()
 	tween.tween_method(rotate_axe, 0., 2., 2)

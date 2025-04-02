@@ -6,6 +6,14 @@ extends Node2D
 func _ready() -> void:
 	var timer = $Timer
 	timer.timeout.connect(on_timer_timeout)
+	GameEvent.event_upgrade_add.connect(on_event_upgrade_add)
+	
+func on_event_upgrade_add(upgrade: AbilityUpgrade, current_grade: Dictionary):
+	if upgrade.id != "axe":
+		return 
+	if current_grade["axe"]["quantity"] > 2:
+		print("斧头技能已经最高")
+		return
 	
 func on_timer_timeout():
 	var axe_ability_scence_ins = axe_ability_scence.instantiate() as Node2D

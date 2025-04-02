@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var damage_interval_timer = $DamageInterValTimer
 @onready var health_component = $HealthComponent
 @onready var health_bar = $HealthBar
+@onready var ability_manager = $AbilityManager
 # collisionArea2d的用处是检测敌人进入 然后收到伤害
 var number_collision_bodies = 0
 
@@ -17,7 +18,14 @@ func _ready() -> void:
 	collision_area.body_exited.connect(on_body_exited)
 	damage_interval_timer.timeout.connect(on_timeout_damage_timer)
 	health_component.health_changed.connect(on_health_changed)
+	GameEvent.event_upgrade_add.connect(on_event_upgrade_add)
 	display_health()
+
+func on_event_upgrade_add(upgrade: AbilityUpgrade, current_grade: Dictionary):
+	if not upgrade is Ability:
+		return
+	ability_manager.add_child(upgrade.ability_controller_scene.instantiate())
+	
 	
 func on_health_changed():
 	display_health()
@@ -42,7 +50,6 @@ func check_damage():
 func on_body_entered(body: Node2D):
 	number_collision_bodies += 1
 	check_damage()
-	
 	
 func on_body_exited(body: Node2D):
 	number_collision_bodies -= 1

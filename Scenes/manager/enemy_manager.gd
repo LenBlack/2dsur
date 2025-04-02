@@ -30,8 +30,6 @@ func get_spawn_position():
 func on_timeout():
 	timer.wait_time = max(timer.wait_time * 0.9, 0.2)
 	timer.start()
-	print("enemy_span_time{0}".format([timer.wait_time]))
-	
 	var basic_enemy = basic_enemy_scene.instantiate() as Node2D
 	basic_enemy.global_position = get_spawn_position()
 	var entity_layer = get_tree().get_first_node_in_group("entity_layer")
