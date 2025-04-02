@@ -49,6 +49,7 @@ func check_damage():
 
 func on_body_entered(body: Node2D):
 	number_collision_bodies += 1
+	print("检测到敌人")
 	check_damage()
 	
 func on_body_exited(body: Node2D):

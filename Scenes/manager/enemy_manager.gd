@@ -13,6 +13,7 @@ func _ready() -> void:
 func get_spawn_position():
 	var player_node = get_tree().get_first_node_in_group("player") as Node2D
 	if player_node == null:
+		print("no player")
 		return 
 	
 	# 生成一个随机的方向
@@ -26,12 +27,19 @@ func get_spawn_position():
 			return spawn_postion
 		else:
 			random_direction = random_direction.rotated(deg_to_rad(90)) 
+	# 这个的作用是当敌人围一圈的时候，上面的射线检测始终是非空 这时候 就不要产生敌人了
+	spawn_postion = Vector2.ZERO
+	return spawn_postion
 	
 func on_timeout():
 	timer.wait_time = max(timer.wait_time * 0.9, 0.2)
 	timer.start()
 	var basic_enemy = basic_enemy_scene.instantiate() as Node2D
+	if get_spawn_position() == Vector2.ZERO:
+		return
+		
 	basic_enemy.global_position = get_spawn_position()
+	
 	var entity_layer = get_tree().get_first_node_in_group("entity_layer")
 	
 	if entity_layer == null:
