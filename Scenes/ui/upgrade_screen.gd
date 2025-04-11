@@ -7,7 +7,6 @@ signal upgrade_selected(upgrade: AbilityUpgrade)
 
 func _ready() -> void:
 	get_tree().paused = true
-	## debug
 	#var card_instance = upgrade_card.instantiate()
 	## 这里有个坑 一定要先add 进入场景树在 引用
 	#cards_container.add_child(card_instance)
